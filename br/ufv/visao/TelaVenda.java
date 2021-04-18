@@ -27,6 +27,7 @@ public class TelaVenda {
         s = new Scanner(System.in);
         controleVenda = new ControleVenda();   
         controleProduto = new ControleProduto();
+        controleCliente = new ControleCliente();
     }
     
     
@@ -52,10 +53,12 @@ public class TelaVenda {
             }
             if(opc == 3)
                 break;
+            telaMenu();
         }
     }
     
     public void telaMenu(){
+        System.out.println("----MENU VENDA----");
         System.out.println("1- Inserir venda");
         System.out.println("2- Listar vendas");
         System.out.println("3- Voltar");
@@ -86,23 +89,32 @@ public class TelaVenda {
             }else{
                 System.err.println("Produto não existente!");
             }
-            System.out.println("Codigo Produto: ");
+            System.out.print("Codigo Produto: ");
             codigo = s.nextInt();
         }
         
         System.out.print("Codigo Cliente: ");
         codigo = s.nextInt();
-        Cliente cliente = controleCliente.pesquisaCliente(codigo);
+        Cliente cExistente = controleCliente.pesquisaCliente(codigo);
+        while(cExistente == null){
+            System.err.println("Cliente não encontrado!");
+            System.out.print("Codigo Cliente: ");
+            codigo = s.nextInt();
+            cExistente = controleCliente.pesquisaCliente(codigo);
+        }
         
         System.out.print("Endereco de entrega: ");
         int end = s.nextInt();
         
-        controleVenda.cadastraVenda(data, status, produtos, quantidades, cliente, end);
+        controleVenda.cadastraVenda(data, status, produtos, quantidades, cExistente, end);
+        System.out.println("----VENDA CADASTRADA----");
         
     }
     
     public void telaListar(){
-        for(String venda: controleVenda.listarVendas()){
+        System.out.println("----LISTAR VENDAS----");
+        ArrayList<String> vendas = controleVenda.listarVendas();
+        for(String venda: vendas){
             System.out.println(venda);
             System.out.println("--------");
         }

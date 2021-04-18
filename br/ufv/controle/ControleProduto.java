@@ -41,15 +41,7 @@ public class ControleProduto {
         
         return produtosStr;
     }
-    /*
-    public boolean isProdutoExistente(int codigo){
-        if(produtoDAO.pesquisaProduto(codigo) != null){
-            return true;
-        }else{
-            return false;
-        }
-    }
-*/
+  
     public String pesquisaProduto(int codigo){
         ArrayList<Produto> produtos = produtoDAO.listarProdutos();
         for(Produto p: produtos){
@@ -57,5 +49,9 @@ public class ControleProduto {
                 return p.toString();
         }
         return null;
+    }
+    
+    public void alteraEstoque(int codigo, int qtd){
+        produtoDAO.alteraEstoque(codigo, qtd);
     }
 }

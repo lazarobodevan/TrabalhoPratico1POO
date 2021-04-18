@@ -24,7 +24,7 @@ public class TelaProduto {
     }
     
     public void telaInicial(){
-        ExibirMenu();
+        exibirMenu();
         int opc;
         while(true){
             opc = s.nextInt();
@@ -36,21 +36,26 @@ public class TelaProduto {
                     telaListar();
                     break;
                 case 3:
-                    //System.exit(0);
+                    telaAlterarEstoque();
+                    break;
+                case 4:
                     break;
                 default:
                     System.err.println("Opcao invalida!");
             }
-            ExibirMenu();
-            if(opc == 3)
+            
+            if(opc == 4)
                 break;
+            exibirMenu();
         }
     }
     
-    public void ExibirMenu(){
+    public void exibirMenu(){
+        System.out.println("----MENU PRODUTO----");
         System.out.println("1- Inserir produto");
         System.out.println("2- Listar produtos");
-        System.out.println("3- Voltar");
+        System.out.println("3- Alterar estoque");
+        System.out.println("4- Voltar");
         System.out.print("Digite: ");
     }
     
@@ -85,5 +90,14 @@ public class TelaProduto {
             System.out.println("----");
         }
         System.out.println("-------------");
+    }
+    
+    public void telaAlterarEstoque(){
+        System.out.println("----ALTERAR ESTOQUE----");
+        System.out.print("Código do produto: ");
+        int cod = s.nextInt();
+        System.out.print("Quantidade: ");
+        int qtd = s.nextInt();
+        controleProduto.alteraEstoque(cod, qtd);
     }
 }

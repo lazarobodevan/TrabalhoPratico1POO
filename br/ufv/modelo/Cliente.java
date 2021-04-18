@@ -43,12 +43,34 @@ public class Cliente {
     public String getEndereco(int pos){
         return this.enderecos.get(pos);
     }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setEnderecos(ArrayList<String> enderecos) {
+        this.enderecos = enderecos;
+    }
+    
     
     @Override
     public String toString(){
         return "Nome "+this.nome+
                 "\nCPF: "+this.cpf+
                 "\nEmail: "+this.email+
-                "\nCodigo: "+this.codigo;
+                "\nCodigo: "+this.codigo+
+                "\nEnderecos: "+this.enderecos;
     }
 }

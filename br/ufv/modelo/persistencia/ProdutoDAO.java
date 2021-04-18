@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Lázaro
  */
 public class ProdutoDAO {
-    private ArrayList<Produto> produtos;    
+    private static ArrayList<Produto> produtos;    
     
     public ProdutoDAO(){
         produtos = new ArrayList<>();
@@ -34,8 +34,19 @@ public class ProdutoDAO {
         return null;
     }
     
-    public ArrayList<Produto> listarProdutos(){
+    public static ArrayList<Produto> listarProdutos(){
         System.out.println(produtos.size());
         return produtos;
+    }
+    
+    public void alteraEstoque(int codigo, int qtd){
+        for(Produto p: produtos){
+            if(p.getCodigo() == codigo){
+                p.setCodigo(qtd);
+                System.out.println("Estoque alterado!");
+            }
+            else
+                System.err.println("Produto nao encontrado!");
+        }
     }
 }

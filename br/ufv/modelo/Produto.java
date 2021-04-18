@@ -30,6 +30,10 @@ public class Produto {
         return this.codigo;
     }
     
+    public void setCodigo(int qtd){
+        this.qtdEstoque = qtd;
+    }
+    
     public int getQtdEstoque(){
         return this.qtdEstoque;
     }
@@ -45,6 +49,7 @@ public class Produto {
         return"Produto: "+this.nome
                 +"\nCategoria: "+this.categoria
                 +"\nPreço: "+this.preco
+                +"\nEstoque: " +this.qtdEstoque
                 +"\nCodigo: "+this.codigo;
     }
 }

@@ -38,6 +38,7 @@ public class Venda {
         return this.quantidades;
     }
     
+        
     @Override
     public String toString(){
         return "Data:" + this.data +
@@ -45,6 +46,6 @@ public class Venda {
                 "\nProdutos " + this.produtos +
                 "\nSatus: "+this.status+
                 "\nQuantidade: "+this.quantidades+
-                "\nEndereço: "+this.cliente.getEndereco(endereco);
+                "\nEndereço: "+this.cliente.getEndereco(endereco-1);
     }
 }

@@ -49,7 +49,7 @@ public class TelaGeral {
     }
     
     public void menu(){
-        System.out.println("----MENU----");
+        System.out.println("----MENU GERAL----");
         System.out.println("1- Produtos");
         System.out.println("2- Clientes");
         System.out.println("3- Vendas");

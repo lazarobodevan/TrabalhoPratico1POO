@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ClienteDAO {
     
-    ArrayList<Cliente> clientes;
+    private static ArrayList<Cliente> clientes;
     
     public ClienteDAO(){
         clientes = new ArrayList<>();
@@ -35,11 +35,11 @@ public class ClienteDAO {
         return null;
     }
     
-    public ArrayList<Cliente> listarClientes(){
+    public static ArrayList<Cliente> listarClientes(){
         return clientes;
     }
     
-    public Cliente pesquisaClienteCodigo(int codigo){
+    public static Cliente pesquisaClienteCodigo(int codigo){
         for(Cliente c: clientes){
             if(c.getCodigo() == codigo)
                 return c;
@@ -47,4 +47,17 @@ public class ClienteDAO {
         return null;
     }
     
+    public void alteraDadosCliente(int codigo, String cpf, String nome, String email, String senha, ArrayList<String>enderecos){
+        for(Cliente c: clientes){
+            if(c.getCodigo() == codigo){
+                c.setCpf(cpf);
+                c.setEmail(email);
+                c.setEnderecos(enderecos);
+                c.setNome(nome);
+                c.setSenha(senha);
+                System.out.println("----ATUALIZADO----");
+            }else
+                System.err.println("Cliente não encontrado");
+        }
+    }
 }

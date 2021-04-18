@@ -4,14 +4,8 @@
  * and open the template in the editor.
  */
 package br.ufv.tp01;
-import br.ufv.modelo.Produto;
-import br.ufv.tp01.TrabalhoPraticco1;
-import br.ufv.visao.TelaProduto;
-import br.ufv.visao.TelaCliente;
-import br.ufv.visao.TelaVenda;
 import br.ufv.visao.TelaGeral;
-/**
- *
+ /*
  * @author Lázaro
  */
 public class TrabalhoPraticco1 {
@@ -21,19 +15,15 @@ public class TrabalhoPraticco1 {
      */
     public static void main(String[] args) {
        
-        /*
-       TelaProduto telaProd = new TelaProduto();
-       telaProd.telaInicial();
- 
-       TelaCliente telaClie = new TelaCliente();
-       telaClie.telaInicial();
-
-       TelaVenda telaVenda = new TelaVenda();
-       telaVenda.telaInicial();
-       */
-        
         TelaGeral telaGeral = new TelaGeral();
         telaGeral.telaGeral();
+        
+        /*
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar data = Calendar.getInstance();
+        data.set(2020, 0, 16);
+        System.out.println(df.format(data.getTime()));
+        */
        
     }
     

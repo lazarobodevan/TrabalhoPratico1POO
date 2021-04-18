@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class VendaDAO {
     private Scanner s;
-    private ArrayList<Venda> vendas;
+    private static ArrayList<Venda> vendas;
     
     public VendaDAO(){
         s = new Scanner(System.in);
@@ -40,7 +40,16 @@ public class VendaDAO {
         return true; //quantidades condizentes com as disponiveis
     }
     
-    public ArrayList<Venda> listarVendas(){
-        return this.vendas;
+    public static ArrayList<Venda> listarVendas(){
+        return vendas;
     }
+    /*
+    public void atualizaStatusVenda(int codigo){
+        for(Venda v: vendas){
+            if(v.)
+        }
+
+    }
+    */
+
 }

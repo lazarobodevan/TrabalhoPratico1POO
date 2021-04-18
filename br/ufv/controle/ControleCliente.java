@@ -51,4 +51,8 @@ public class ControleCliente{
         }
         return null;
     }
+    
+    public void alteraDadosCliente(int codigo, String cpf, String nome, String email, String senha, ArrayList<String>enderecos){
+        clienteDAO.alteraDadosCliente(codigo, cpf, nome, email, senha, enderecos);
+    }
 }
