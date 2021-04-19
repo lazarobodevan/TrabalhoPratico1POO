@@ -9,6 +9,7 @@ import br.ufv.controle.ControleCliente;
 import br.ufv.controle.ControleProduto;
 import br.ufv.controle.ControleVenda;
 import br.ufv.modelo.Cliente;
+import br.ufv.modelo.Produto;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -46,13 +47,15 @@ public class TelaVenda {
                     telaListar();
                     break;
                 case 3:
-                    //System.exit(0);
+                    telaAtualizarStatus();
+                    break;
+                case 4:
                     break;
                 default:
                     System.err.println("Opcao invalida");
                     break;
             }
-            if(opc == 3)
+            if(opc == 4)
                 break;
             telaMenu();
         }
@@ -62,12 +65,16 @@ public class TelaVenda {
         System.out.println("----MENU VENDA----");
         System.out.println("1- Inserir venda");
         System.out.println("2- Listar vendas");
-        System.out.println("3- Voltar");
+        System.out.println("3- Atualizar status");
+        System.out.println("4- Voltar");
         System.out.print("Digite: ");
     }
     
     public void telaInserir(){
         System.out.println("----INSERIR VENDA----");
+        System.out.print("Codigo: ");
+        int codCompra = s.nextInt();
+        
         System.out.print("Data: ");
         String data = s.next();
         
@@ -77,17 +84,30 @@ public class TelaVenda {
         System.out.print("Produtos: ");
         ArrayList<String> produtos = new ArrayList<>();
         int codigo = s.nextInt();
+        
         System.out.println("-->Insira valor negativo para encerrar!");
         ArrayList<Integer> quantidades = new ArrayList<>();
+        double valorTotal = 0;
+                
         while(true){
             if(codigo < 0)
                 break;
-            String pExistente = controleProduto.pesquisaProduto(codigo);
+            Produto pExistente = controleProduto.pesquisaProduto(codigo);
             if(pExistente != null){
-                produtos.add(pExistente);
+                produtos.add(pExistente.toString());
                 System.out.print("Quantidades: ");
+                int qtd = s.nextInt();
                 
-                quantidades.add(s.nextInt());
+                while(qtd > pExistente.getQtdEstoque()){
+                    System.err.println("Quantidade indisponivel!");
+                    System.err.println("Estoque: "+pExistente.getQtdEstoque());
+                    System.out.print("Quantidades: ");
+                    qtd = s.nextInt();
+                }
+                
+                quantidades.add(qtd);
+                controleProduto.alteraEstoque(codigo, pExistente.getQtdEstoque() - qtd);
+                valorTotal += qtd * pExistente.getPreco();
             }else{
                 System.err.println("Produto não existente!");
             }
@@ -108,7 +128,7 @@ public class TelaVenda {
         System.out.print("Endereco de entrega: ");
         int end = s.nextInt();
         
-        controleVenda.cadastraVenda(data, status, produtos, quantidades, cExistente, end);
+        controleVenda.cadastraVenda(codCompra, data, status, produtos, quantidades, cExistente, end, valorTotal);
         System.out.println("----VENDA CADASTRADA----");
         
     }
@@ -147,7 +167,13 @@ public class TelaVenda {
                 System.err.println("Opção inválida!");
                 break;
         }
-        
-        
+    }
+    
+    public void telaAtualizarStatus(){
+        System.out.print("Codigo: ");
+        int codigo = s.nextInt();
+        System.out.print("Novo status: ");
+        String status = s.next();
+        controleVenda.atualizaStatusVenda(codigo, status);
     }
 }

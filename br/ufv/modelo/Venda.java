@@ -20,14 +20,18 @@ public class Venda {
     private ArrayList<Integer> quantidades;
     private Cliente cliente;
     private int endereco;
+    private int codigo;
+    private double valorTotal;
     
-    public Venda(String data, String status, ArrayList<String> produtos, ArrayList<Integer> quantidades, Cliente cliente, int endereco){
+    public Venda(int codigo, String data, String status, ArrayList<String> produtos, ArrayList<Integer> quantidades, Cliente cliente, int endereco, double valorTotal){
+        this.codigo = codigo;
         this.data = data;
         this.status = status;
         this.produtos = produtos;
         this.quantidades = quantidades;
         this.cliente = cliente;
         this.endereco = endereco;
+        this.valorTotal = valorTotal;
     }
     
     public ArrayList<String> getProdutos(){
@@ -42,6 +46,17 @@ public class Venda {
         return this.data;
     }
     
+    public int getCodigo(){
+        return this.codigo;
+    }
+    
+    public void setStatus(String status){
+        this.status = status;
+    }
+    
+    public double getValorTotal(){
+        return this.valorTotal;
+    }
         
     @Override
     public String toString(){
@@ -50,6 +65,7 @@ public class Venda {
                 "\nProdutos " + this.produtos +
                 "\nSatus: "+this.status+
                 "\nQuantidade: "+this.quantidades+
-                "\nEndereço: "+this.cliente.getEndereco(endereco-1);
+                "\nEndereço: "+this.cliente.getEndereco(endereco-1)+
+                "\nValor total: "+this.valorTotal;
     }
 }

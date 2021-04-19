@@ -41,10 +41,10 @@ public class ProdutoDAO {
     public void alteraEstoque(int codigo, int qtd){
         for(Produto p: produtos){
             if(p.getCodigo() == codigo){
-                p.setCodigo(qtd);
+                p.setEstoque(qtd);
                 System.out.println("Estoque alterado!");
-            }
-            else
+                return;
+            }else
                 System.err.println("Produto nao encontrado!");
         }
     }

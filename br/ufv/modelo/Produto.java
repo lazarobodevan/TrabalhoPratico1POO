@@ -30,7 +30,7 @@ public class Produto {
         return this.codigo;
     }
     
-    public void setCodigo(int qtd){
+    public void setEstoque(int qtd){
         this.qtdEstoque = qtd;
     }
     
@@ -40,6 +40,10 @@ public class Produto {
     
     public String getNome(){
         return this.nome;
+    }
+    
+    public double getPreco(){
+        return this.preco;
     }
     
     /*

@@ -44,13 +44,23 @@ public class VendaDAO {
     public static ArrayList<Venda> listarVendas(){
         return vendas;
     }
-    /*
-    public void atualizaStatusVenda(int codigo){
+    
+    public Venda isVendaExistente(int codigo){
         for(Venda v: vendas){
-            if(v.)
+            if(v.getCodigo() == codigo)
+                return v;
+        }
+        return null;
+    }
+    
+    public void atualizaStatusVenda(int codigo, String status){
+        for(Venda v: vendas){
+            if(v.getCodigo() == codigo){
+                v.setStatus(status);
+            }
         }
 
     }
-    */
+    
 
 }

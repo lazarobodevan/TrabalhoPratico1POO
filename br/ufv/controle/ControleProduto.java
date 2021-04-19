@@ -42,11 +42,11 @@ public class ControleProduto {
         return produtosStr;
     }
   
-    public String pesquisaProduto(int codigo){
+    public Produto pesquisaProduto(int codigo){
         ArrayList<Produto> produtos = produtoDAO.listarProdutos();
         for(Produto p: produtos){
             if(p.getCodigo() == codigo)
-                return p.toString();
+                return p;
         }
         return null;
     }

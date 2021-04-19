@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package br.ufv.visao;
- import br.ufv.visao.*;
+import java.text.ParseException;
 import java.util.Scanner;
 /**
  *
@@ -23,7 +23,7 @@ public class TelaGeral {
         s = new Scanner(System.in);
     }
     
-    public void telaGeral(){
+    public void telaGeral() throws ParseException{
         menu();
         int opc = s.nextInt();
         while(true){

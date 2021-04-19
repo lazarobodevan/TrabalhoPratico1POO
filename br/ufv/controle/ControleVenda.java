@@ -25,8 +25,8 @@ public class ControleVenda {
         vendaDAO = new VendaDAO();
     }
     
-    public void cadastraVenda(String data, String status, ArrayList<String> produtos, ArrayList<Integer> quantidade, Cliente cliente, int endereco){
-        Venda venda = new Venda(data, status, produtos, quantidade, cliente, endereco);
+    public void cadastraVenda(int codigo, String data, String status, ArrayList<String> produtos, ArrayList<Integer> quantidade, Cliente cliente, int endereco, double valorTotal){
+        Venda venda = new Venda(codigo, data, status, produtos, quantidade, cliente, endereco, valorTotal);
         //if(vendaDAO.validaQuantidade()){
             vendaDAO.cadastraVenda(venda);
        // }else{
@@ -70,5 +70,11 @@ public class ControleVenda {
         return vendasData;
     }
     
-    
+    public void atualizaStatusVenda(int codigo, String status){
+        if(vendaDAO.isVendaExistente(codigo) != null){
+            vendaDAO.atualizaStatusVenda(codigo, status);
+            System.out.println("Status atualizado!");
+        }else
+            System.out.println("Venda não encontrada");
+    }
 }
