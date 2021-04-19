@@ -28,18 +28,19 @@ public class VendaDAO {
         System.out.println("Venda cadastrada com sucesso!");
     }
     
+    /*
     public boolean validaQuantidade(){
         for(Venda v: vendas){
             for(int i = 0; i < v.getProdutos().size(); i++){
-                //if(v.getQuantidades().get(i) > v.getProdutos().get(i).getQtdEstoque()){
+                if(v.getQuantidades().get(i) > v.getProdutos().get(i).getQtdEstoque()){
                     //se a quantidade a ser comprada for maior que a quantidade em estoque
                     return false;
-                //}
+                }
             }
         }
         return true; //quantidades condizentes com as disponiveis
     }
-    
+    */
     public static ArrayList<Venda> listarVendas(){
         return vendas;
     }

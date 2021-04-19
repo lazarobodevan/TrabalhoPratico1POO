@@ -87,11 +87,33 @@ public class TelaCliente {
     }
     
     public void telaListar(){
-        ArrayList<String> clientes = controleCliente.listarClientes();
-        for(String s: clientes){
-            System.out.println(s);
-            System.out.println("----");
+        System.out.println("----LISTAR CLIENTE----");
+        System.out.println("1- Listar todos");
+        System.out.println("2- Filtrar nome");
+        System.out.print("Digite: ");
+        int opc = s.nextInt();
+        switch(opc){
+            case 1:
+                ArrayList<String> clientes = controleCliente.listarClientes();
+                System.out.println("----");
+                for(String s: clientes){
+                    System.out.println(s);
+                    System.out.println("----");
+                }
+                System.out.println("---------");
+                break;
+            
+            case 2:
+                System.out.print("Nome: ");
+                String nome = s.next();
+                ArrayList<String> clientesNome = controleCliente.listarClienteNome(nome);
+                for(String s: clientesNome){
+                    System.out.println(s);
+                    System.out.println("----");
+                }
+                System.out.println("--------");
         }
+        
     }
     
     public void telaAlterarDados(){

@@ -38,6 +38,10 @@ public class Venda {
         return this.quantidades;
     }
     
+    public String getData(){
+        return this.data;
+    }
+    
         
     @Override
     public String toString(){

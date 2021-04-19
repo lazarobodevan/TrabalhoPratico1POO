@@ -55,4 +55,16 @@ public class ControleCliente{
     public void alteraDadosCliente(int codigo, String cpf, String nome, String email, String senha, ArrayList<String>enderecos){
         clienteDAO.alteraDadosCliente(codigo, cpf, nome, email, senha, enderecos);
     }
+    
+    public ArrayList<String> listarClienteNome(String nome){
+        ArrayList<Cliente> clientes = clienteDAO.listarClientes();
+        ArrayList<String> clientesStr = new ArrayList<>();
+        
+        for(Cliente c: clientes){
+            if(c.getNome().equals(nome)){
+                clientesStr.add(c.toString());
+            }
+        }
+        return clientesStr;
+    }
 }

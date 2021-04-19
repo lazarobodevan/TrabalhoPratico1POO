@@ -38,6 +38,10 @@ public class Produto {
         return this.qtdEstoque;
     }
     
+    public String getNome(){
+        return this.nome;
+    }
+    
     /*
     public void cadastraProduto(int codigo, String descricao, int qtdEstoque, String categoria, double preco, String nome){
         Produto p = new Produto(codigo, descricao, qtdEstoque, categoria, preco, nome);

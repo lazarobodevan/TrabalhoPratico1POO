@@ -83,13 +83,35 @@ public class TelaProduto {
     }
     
     public void telaListar(){
-        ArrayList<String> produtos = controleProduto.listarProdutos();
+        
         System.out.println("----LISTAR PRODUTOS----");
-        for(String s: produtos){
-            System.out.println(s);
-            System.out.println("----");
+        System.out.println("1- Listar tudo");
+        System.out.println("2- Filtrar nome");
+        System.out.print("Digite: ");
+        int opc = s.nextInt();
+        switch(opc){
+            case 1:
+                ArrayList<String> produtos = controleProduto.listarProdutos();
+                for(String s: produtos){
+                    System.out.println(s);
+                    System.out.println("----");
+                }
+                System.out.println("-------------");
+                break;
+            case 2:
+                System.out.print("Nome: ");
+                String nome = s.next();
+                ArrayList<String> produtosNome = controleProduto.listarPorNome(nome);
+                System.out.println("------");
+                for(String s: produtosNome){
+                    System.out.println(s);
+                    System.out.println("-------");
+                }
+                break;
+            default:
+                System.err.println("Opção Invalida!");
+                break;
         }
-        System.out.println("-------------");
     }
     
     public void telaAlterarEstoque(){

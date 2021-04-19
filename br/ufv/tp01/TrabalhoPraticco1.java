@@ -17,6 +17,8 @@ public class TrabalhoPraticco1 {
        
         TelaGeral telaGeral = new TelaGeral();
         telaGeral.telaGeral();
+       
+        
         
         /*
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");

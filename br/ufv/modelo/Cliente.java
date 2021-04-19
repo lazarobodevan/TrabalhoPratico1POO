@@ -43,6 +43,10 @@ public class Cliente {
     public String getEndereco(int pos){
         return this.enderecos.get(pos);
     }
+    
+    public String getNome(){
+        return this.nome;
+    }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;

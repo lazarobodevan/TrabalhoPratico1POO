@@ -54,4 +54,15 @@ public class ControleProduto {
     public void alteraEstoque(int codigo, int qtd){
         produtoDAO.alteraEstoque(codigo, qtd);
     }
+    
+    public ArrayList<String> listarPorNome(String nome){
+        ArrayList<Produto> produtos = produtoDAO.listarProdutos();
+        ArrayList<String> produtosNome = new ArrayList<>();
+        for(Produto p: produtos){
+            if(p.getNome().equals(nome)){
+                produtosNome.add(p.toString());
+            }
+        }
+        return produtosNome;
+    }
 }

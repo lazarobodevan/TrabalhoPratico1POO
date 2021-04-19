@@ -9,6 +9,7 @@ import br.ufv.controle.ControleCliente;
 import br.ufv.controle.ControleProduto;
 import br.ufv.controle.ControleVenda;
 import br.ufv.modelo.Cliente;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ public class TelaVenda {
     }
     
     
-    public void telaInicial(){
+    public void telaInicial() throws ParseException{
         int opc;
         telaMenu();
         
@@ -66,6 +67,7 @@ public class TelaVenda {
     }
     
     public void telaInserir(){
+        System.out.println("----INSERIR VENDA----");
         System.out.print("Data: ");
         String data = s.next();
         
@@ -111,13 +113,41 @@ public class TelaVenda {
         
     }
     
-    public void telaListar(){
+    public void telaListar() throws ParseException{
         System.out.println("----LISTAR VENDAS----");
-        ArrayList<String> vendas = controleVenda.listarVendas();
-        for(String venda: vendas){
-            System.out.println(venda);
-            System.out.println("--------");
+        System.out.println("1- Listar todas");
+        System.out.println("2- Filtrar por data");
+        System.out.print("Digite: ");
+        int opc = s.nextInt();
+        
+        switch(opc){
+            case 1:
+                ArrayList<String> vendas = controleVenda.listarVendas();
+                for(String venda: vendas){
+                    System.out.println(venda);
+                    System.out.println("--------");
+                }
+                System.out.println("############");
+                break;
+            
+            case 2:
+                System.out.print("Data inicio: ");
+                String dtI = s.next();
+                System.out.print("Data fim: ");
+                String dtF = s.next();
+                ArrayList<String> vendasData = controleVenda.listarVendasData(dtI, dtF);
+                System.out.println("--------");
+                for(String s: vendasData){
+                    System.out.println(s);
+                    System.out.println("----");
+                }
+                System.out.println("--------");
+                break;
+            default:
+                System.err.println("Opção inválida!");
+                break;
         }
-        System.out.println("############");
+        
+        
     }
 }

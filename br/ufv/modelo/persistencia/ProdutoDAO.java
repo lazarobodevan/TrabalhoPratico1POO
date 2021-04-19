@@ -35,7 +35,6 @@ public class ProdutoDAO {
     }
     
     public static ArrayList<Produto> listarProdutos(){
-        System.out.println(produtos.size());
         return produtos;
     }
     
